@@ -1,0 +1,30 @@
+2:11
+
+
+npm init -y => to create package.json
+clear
+npm i express cors mongoose jsonwebtoken cookie-parser dotenv bcryptjs => do gpt
+npm i nodemon => make changes in scripts in package.json
+
+npx create-react-app client
+
+cd server
+npm run dev
+
+
+
+
+cd client
+npm start
+
+npm install -D tailwindcss
+npx tailwindcss init
+npm i react-router-dom
+npm install react-icons --save
+npm i axios
+npm install react-hot-toast    // for notifications
+
+
+
+________________________
+Short Cuts : rafce
