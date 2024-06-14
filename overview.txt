@@ -1,4 +1,4 @@
-2:11
+3:11 3:27
 
 
 npm init -y => to create package.json
@@ -23,6 +23,7 @@ npm i react-router-dom
 npm install react-icons --save
 npm i axios
 npm install react-hot-toast    // for notifications
+npm install @reduxjs/toolkit react-redux
 
 
 

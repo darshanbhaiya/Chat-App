@@ -31,7 +31,7 @@ async function checkPassword(request,response){
 
         return response.cookie('token',token,cookieOptions).status(200).json({
             message:"Login Successfully",
-            data:token,
+            token:token,
             success:true
         })
         

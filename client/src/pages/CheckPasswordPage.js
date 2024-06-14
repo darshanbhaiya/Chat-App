@@ -6,6 +6,8 @@ import axios from 'axios'
 import toast from 'react-hot-toast';
 import { FaRegCircleUser } from "react-icons/fa6";
 import Avatar from '../components/Avatar';
+import { useDispatch } from 'react-redux';
+import { setToken, setUser } from '../redux/userSlice';
 
 const CheckPasswordPage = () => {
 
@@ -13,10 +15,11 @@ const CheckPasswordPage = () => {
     password:"",
   })
 
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const location = useLocation()
+  const dispatch = useDispatch()
 
-  console.log("location",location.state)
+  // console.log("location",location.state)
 
   useEffect(()=>{
     if(!location?.state?.name){
@@ -42,14 +45,25 @@ const CheckPasswordPage = () => {
     const URL=`${process.env.REACT_APP_BACKEND_URL}/api/password`
 
     try {
-      const response =await axios.post(URL,{
-        userId:location?.state?._id,
-        password:data.password
+      const response =await axios({
+        method:'post',
+        url:URL,
+        data:{
+          userId:location?.state?._id,
+          password:data.password
+        },
+        withCredentials:true
       })
 
       toast.success(response.data.message)
 
+
       if(response.data.success){
+
+        console.log("data",response)
+        dispatch(setToken(response?.data?.token))
+        localStorage.setItem('token',response?.data?.token)
+
         setData({
           password:"",
         })
