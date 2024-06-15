@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { logout, setUser } from '../redux/userSlice'
+import Sidebar from '../components/Sidebar'
 
 
 const Home = () => {
@@ -19,15 +20,16 @@ const Home = () => {
         const response=await axios({
           url:URL,
           withCredentials:true
-      })
+        })
 
-      dispatch(setUser(response.data.data))
-      if(response.data.logout){
-          dispatch(logout())
-          navigate('/email')
-      }
+        dispatch(setUser(response.data.data))
+         
+        if(response.data.data.logout){
+            dispatch(logout())
+            navigate('/email')
+        }
   
-      console.log("Current user details ",response)
+       console.log("Current user details ",response)
   
     } catch (error) {
       console.log("error",error)
@@ -40,8 +42,10 @@ const Home = () => {
 
   
   return (
-    <div>
-      Home
+    <div className='grid lg:grid-cols-[300px,1fr] h-screen max-h-screen'>
+      <section className='bg-white'>
+        <Sidebar/>
+      </section>
 
       {/* message component */}
       <section>

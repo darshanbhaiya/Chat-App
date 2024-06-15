@@ -86,7 +86,7 @@ const RegisterPage = () => {
       <div className='bg-white w-full max-w-md  rounded overflow-hidden p-4 mx-auto'>
         <h3>Welcome to Chat App!</h3>
 
-        <form action="" className='grid gap-4 mt-5' onSubmit={handleSubmit}>
+        <form  className='grid gap-4 mt-5' onSubmit={handleSubmit}>
 
           <div className="flex flex-col gap-1">
             <label htmlFor="name">Name: </label>

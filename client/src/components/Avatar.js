@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaRegCircleUser } from "react-icons/fa6";
+
 const Avatar = ({userId,name,imageUrl,width,height}) => {
 
   let avatarName=""
@@ -29,6 +30,7 @@ const Avatar = ({userId,name,imageUrl,width,height}) => {
 
   ]
 
+  
    const randomNumber=Math.floor(Math.random() * 11)
    
   return (
