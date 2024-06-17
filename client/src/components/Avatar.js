@@ -24,7 +24,7 @@ const Avatar = ({userId,name,imageUrl,width,height}) => {
     'bg-gray-200',
     'bg-indigo-200',
     'bg-fuchsia-200',
-    'g-rose-200',
+    'bg-rose-200',
     'bg-cyan-200',
     'bg-teal-200'
 
