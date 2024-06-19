@@ -8,11 +8,12 @@ const UserSearchCard = ({user,onClose}) => {
 
       <div>
         <Avatar
-            width={55}
-            height={55}
+            width={50}
+            height={50}
             name={user?.name}
             userId={user?._id}
             imageUrl={user?.profile_pic}
+            
         />
       </div>
 
