@@ -16,25 +16,30 @@ const messageSchema=new mongoose.Schema({
     seen:{
         type:Boolean,
         default:false
+    },
+    msgByUserId:{
+        type:mongoose.Schema.ObjectId,
+        required:true,
+        ref:'User'
     }
 },{
     timestamps:true
 })
 
-const conservationSchema=new mongoose.Schema({
+const conversationSchema=new mongoose.Schema({
     sender:{
-        type:mongoose.Schema.ObjectID,
+        type:mongoose.Schema.ObjectId,
         required:true,
         ref:'User'
     },
     receiver:{
-        type:mongoose.Schema.ObjectID,
+        type:mongoose.Schema.ObjectId,
         required:true,
         ref:'User'
     },
     messages:[
         {
-            type:mongoose.Schema.ObjectID,
+            type:mongoose.Schema.ObjectId,
             ref:'Message'
         }
     ]    
@@ -43,7 +48,7 @@ const conservationSchema=new mongoose.Schema({
 })
 
 const MessageModel = mongoose.model('Message',messageSchema)
-const ConversationModel = mongoose.model('Conversation',conservationSchema)
+const ConversationModel = mongoose.model('Conversation',conversationSchema)
 
 module.exports={
     MessageModel,

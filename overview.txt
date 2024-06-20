@@ -1,4 +1,4 @@
-5:37 5:56 6:54
+9:00
 
 
 MERN TAILWIND socket.io
@@ -15,9 +15,7 @@ npm i socket.io
 cd server
 npm run dev
 
-
-
-
+_______________________________________________________________
 cd client
 npm start
 
@@ -29,6 +27,7 @@ npm i axios
 npm install react-hot-toast    // for notifications
 npm install @reduxjs/toolkit react-redux
 npm i socket.io-client
+npm install moment --save
 
 
 
