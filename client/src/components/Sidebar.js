@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { IoChatbubbleEllipses } from "react-icons/io5";
 import { FaUserPlus } from "react-icons/fa";
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { RiLogoutBoxLine } from "react-icons/ri";
 import Avatar from './Avatar';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import EditUserDetails from './EditUserDetails';
 import Divider from './Divider';
 import { GoArrowUpLeft } from "react-icons/go";
 import SearchUser from './SearchUser';
 import { FaImage } from "react-icons/fa6";
 import { FaVideo } from "react-icons/fa";
+import { logout } from '../redux/userSlice';
+
 
 const Sidebar = () => {
 
@@ -19,6 +21,8 @@ const Sidebar = () => {
     const [allUser,setAllUser]=useState([])
     const [openSearchUser,setOpenSearchUser]=useState(false)
     const socketConnection=useSelector(state=>state?.user?.socketConnection)
+    const dispatch =useDispatch()
+    const navigate=useNavigate()
 
     useEffect(()=>{
         if(socketConnection){
@@ -52,6 +56,13 @@ const Sidebar = () => {
         }
     },[socketConnection,user])
 
+
+    const handleLogout=()=>{
+        dispatch(logout())
+        navigate("/email")
+        localStorage.clear()
+
+    }
     
 
   return (
@@ -81,7 +92,7 @@ const Sidebar = () => {
                     />
                 </button>
 
-                <button className='w-12 h-12  flex justify-center items-center cursor-pointer hover:bg-slate-200 rounded' title="logout">
+                <button className='w-12 h-12  flex justify-center items-center cursor-pointer hover:bg-slate-200 rounded' title="logout" onClick={handleLogout}>
                     <span className='-ml-2'>
                         <RiLogoutBoxLine size={20} />
                     </span>
@@ -118,14 +129,14 @@ const Sidebar = () => {
                                 <Avatar
                                     imageUrl={conv?.userDetails?.profile_pic}
                                     name={conv?.userDetails?.name}
-                                    width={40}
-                                    height={40}
+                                    width={45}
+                                    height={45}
 
                                 />
                             </div>
-                            <div>
+                            <div >
                                 <h3 className='text-ellipsis line-clamp-1 font-semibold text-base'>{conv?.userDetails?.name}</h3>
-                                <div className=' text-slate-500 text-xs flex items-center gap-1'>
+                                <div className=' text-slate-500 text-xs flex items-center gap-1  '>
                                     <div className='flex items-center gap-1 '>
                                         {
                                             conv?.lastMsg?.imageUrl && ( 
@@ -144,7 +155,7 @@ const Sidebar = () => {
                                             )
                                         }
                                     </div>
-                                    <p className='text-ellipsis line-clamp-1'>{conv?.lastMsg?.text}</p>
+                                    <p className='text-ellipsis line-clamp-1  w-fit max-w-[100px] md:max-w-40 lg:max-w-36'>{conv?.lastMsg?.text}</p>
                                 </div>
                                 
                             </div>

@@ -62,6 +62,15 @@ const EditUserDetails = ({onClose,user}) => {
     const handleSubmit = async(e) =>{
         e.preventDefault()
         e.stopPropagation()
+
+        // Extract necessary fields from data
+        const { name, profile_pic} = data;
+
+        const requestData = {
+            name,
+            profile_pic,
+            
+        };
         
         try {
             const URL=`${process.env.REACT_APP_BACKEND_URL}/api/update-user`
@@ -69,7 +78,7 @@ const EditUserDetails = ({onClose,user}) => {
             const response = await axios({
                 method:'post',
                 url:URL,
-                data:data,
+                data:requestData,
                 withCredentials:true
             })
 

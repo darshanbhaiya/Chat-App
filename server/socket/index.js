@@ -34,7 +34,7 @@ io.on('connection',async(socket)=>{
     const user=await getUserDetailsFromToken(token)
 
     // create a room for a specific user
-    socket.join(user?._id.toString())
+    socket.join(user?._id?.toString())
     onlineUser.add(user?._id?.toString())
 
     io.emit("onlineUser",Array.from(onlineUser))
@@ -129,12 +129,44 @@ io.on('connection',async(socket)=>{
         const conversation=await getConversation(currentUserId)
         socket.emit('conversation',conversation)
 
+    })
+
+    
+    socket.on('seen',async(msgByUserId)=>{
+
+        let conversation=await ConversationModel.findOne({
+            "$or":[
+                {sender:user?._id, receiver:msgByUserId},
+                {sender:msgByUserId, receiver:user?._id}
+            ]
+        })
+
+        const conversationMessageId=conversation?.messages || []
+
+        const updateMessages = await MessageModel.updateMany(
+            {_id:{"$in":conversationMessageId}, msgByUserId : msgByUserId},
+            {"$set":{seen:true}}
+        )
+
+
+        // send conversation sidebar
+        const conversationSender=await getConversation(user?._id?.toString())
+        const conversationReceiver=await getConversation(msgByUserId)
         
+        io.to(user?._id?.toString()).emit('conversation',conversationSender)
+        io.to(msgByUserId).emit('conversation',conversationReceiver)
+
+
 
     })
+
+
+
+
+
     // disconnect 
     socket.on('disconnect',()=>{
-        onlineUser.delete(user?._id)
+        onlineUser.delete(user?._id?.toString())
         console.log('disconnect user',socket.id)
     })
 })

@@ -2,6 +2,7 @@ const getUserDetailsFromToken = require("../helpers/getUserDetailsFromToken")
 const UserModel = require("../models/UserModel")
 
 async function updateUserDetails(request,response){
+
     try {
         const token=request.cookies.token || ""
 
