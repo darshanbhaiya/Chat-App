@@ -15,7 +15,7 @@ const Home = () => {
   const navigate=useNavigate()
   const location=useLocation()
 
-  console.log("user",user)
+  // console.log("user",user)
 
   const fetchUserDetails=async()=>{
     try {
@@ -32,7 +32,7 @@ const Home = () => {
             navigate('/email')
         }
   
-       console.log("Current user details ",response)
+      //  console.log("Current user details ",response)
   
     } catch (error) {
       console.log("error",error)
@@ -52,7 +52,7 @@ const Home = () => {
     })
 
     socketConnection.on('onlineUser',(data)=>{
-      console.log(data)
+      // console.log(data)
       dispatch(setOnlineUser(data))
     })
 

@@ -82,7 +82,7 @@ const EditUserDetails = ({onClose,user}) => {
                 withCredentials:true
             })
 
-            console.log('response',response)
+            // console.log('response',response)
 
             toast.success(response?.data?.message)
 
