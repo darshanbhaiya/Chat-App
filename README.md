@@ -1,6 +1,3 @@
-Sure! Here's a sample README for your repository:
-
----
 
 # MERN Chat App
 
@@ -67,9 +64,7 @@ Once the server and client are running, open your browser and navigate to `http:
 
 Contributions are welcome! Please fork the repository and submit a pull request for any changes you would like to make.
 
-## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 
 
