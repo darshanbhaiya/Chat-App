@@ -7,6 +7,8 @@
 
 This project is a real-time chat application built using the MERN stack (MongoDB, Express.js, React.js, Node.js), along with Socket.io for real-time communication, Redux-Toolkit for state management, and Tailwind CSS for styling. The app allows users to chat in real-time and share images and videos.
 
+Check out the deployed app [here](https://moonlit-conkies-722532.netlify.app/).
+
 ## Features
 
 - Real-time messaging
@@ -63,12 +65,3 @@ Once the server and client are running, open your browser and navigate to `http:
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request for any changes you would like to make.
-
-
-
-
-
-
-
-
-
